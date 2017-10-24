@@ -53,7 +53,7 @@ namespace Int64 {
                 var inputPath = args[0];
                 var input = File.ReadAllText(inputPath);
                 var parser = new Parser(new Scanner(input).Start().GetEnumerator());
-                parser.Program();
+                parser.CProgram();
                 Console.WriteLine("Syntax OK.");
 
             } catch (Exception e) {
