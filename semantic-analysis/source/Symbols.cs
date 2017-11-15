@@ -34,6 +34,13 @@ namespace Int64 {
         public List<VariableSym> localVars = new List<VariableSym>();
         public FunctionSymKind kind;
 
+        public VariableSym GetLocalVariableSymbolByLexeme(string lexeme) {
+            foreach (VariableSym variable in localVars) {
+                if (variable.anchorToken.Lexeme == lexeme) return variable;
+            }
+            return null;
+        }
+
         public void AddLocalVariable(VariableSym newVariable) {
             foreach (VariableSym variable in localVars) {
                 if (variable.anchorToken.Lexeme == newVariable.anchorToken.Lexeme) {

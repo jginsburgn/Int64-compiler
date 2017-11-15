@@ -30,7 +30,7 @@ The following is a list of nodes with their structure:
 	10) NFunCall (identifier is in anchor token)
 		1) NExprList
 	11) NExprList
-		*) Expr
+		*) NExpr
 	12) NExpr
 		1) NExprOr
 		2?)

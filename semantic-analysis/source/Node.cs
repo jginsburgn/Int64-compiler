@@ -13,7 +13,7 @@ namespace Int64 {
 
     class Node: IEnumerable<Node> {
 
-        IList<Node> children = new List<Node>();
+        public IList<Node> children = new List<Node>();
 
         public Node this[int index] {
             get {
