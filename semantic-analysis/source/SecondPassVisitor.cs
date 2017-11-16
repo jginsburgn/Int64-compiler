@@ -199,8 +199,6 @@ namespace Int64 {
 
 		private string SanitizeLeadingZeros(string number, int prefixLength) {
 			string numberWithoutPrefix = number.Substring(prefixLength);
-			Console.WriteLine("----------------asdfasdf");
-			Console.WriteLine(numberWithoutPrefix);
 			for (int i = 0; i < numberWithoutPrefix.Length; i++) {
 				if (numberWithoutPrefix[i] == '0') {
 					if (i == numberWithoutPrefix.Length - 1) numberWithoutPrefix = "0"; // The whole number is a string of zeros, semantically equivalent to a single zero
@@ -237,9 +235,9 @@ namespace Int64 {
 					break;
 				}
 				case TokenCategory.BASE_10: {
-					int maxNumerals = 20;
+					int maxNumerals = 19;
 					int prefixLength = 0;
-					string highestDecimalRepresentation = "18446744073709551615";
+					string highestDecimalRepresentation = "9223372036854775807";
 					string sanitizedLexeme = SanitizeLeadingZeros(lexeme, prefixLength);
 					if (sanitizedLexeme.Length > maxNumerals + prefixLength) errorFound = true;
 					if (sanitizedLexeme.Length == maxNumerals + prefixLength) {
