@@ -116,6 +116,9 @@ namespace Int64 {
 
 		public void Visit (NForStmt nForStmt) {
 			++nestedLoopCount;
+			Token anchorToken = nForStmt.AnchorToken;
+			string lexeme = anchorToken.Lexeme;
+			if (currentFunction.GetLocalVariableSymbolByLexeme(lexeme) == null && semanticAnalyzer.GetGlobalVariableSymbolByLexeme(lexeme) == null) throw new SemanticError("Variable not in scope", anchorToken);
 			GenericChildVisitor(nForStmt);
 			--nestedLoopCount;
 		}
@@ -177,6 +180,11 @@ namespace Int64 {
 		}
 
 		public void Visit (NExprPrimary nExprPrimary) {
+			if (nExprPrimary.children.Count == 0) {
+				Token anchorToken = nExprPrimary.AnchorToken;
+				string lexeme = anchorToken.Lexeme;
+				if (currentFunction.GetLocalVariableSymbolByLexeme(lexeme) == null && semanticAnalyzer.GetGlobalVariableSymbolByLexeme(lexeme) == null) throw new SemanticError("Variable not in scope", anchorToken);
+			}
 			GenericChildVisitor(nExprPrimary);
 		}
 
